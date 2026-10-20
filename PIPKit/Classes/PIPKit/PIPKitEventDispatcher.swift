@@ -16,6 +16,9 @@ final class PIPKitEventDispatcher {
         rootViewController?.view.window
     }
     private weak var rootViewController: PIPKitViewController?
+    private var transitionDuration: TimeInterval {
+        rootViewController?.pipTransitionDuration ?? 0.25
+    }
     private lazy var transitionGesture: UIPanGestureRecognizer = {
         UIPanGestureRecognizer(target: self, action: #selector(onTransition(_:)))
     }()
@@ -52,7 +55,7 @@ final class PIPKitEventDispatcher {
     }
     
     func enterFullScreen() {
-        UIView.animate(withDuration: 0.25, animations: { [weak self] in
+        UIView.animate(withDuration: transitionDuration, animations: { [weak self] in
             self?.updateFrame()
         }) { [weak self] (_) in
             self?.didEnterFullScreen()
@@ -60,7 +63,7 @@ final class PIPKitEventDispatcher {
     }
 
     func enterPIP() {
-        UIView.animate(withDuration: 0.25, animations: { [weak self] in
+        UIView.animate(withDuration: transitionDuration, animations: { [weak self] in
             self?.updateFrame()
         }) { [weak self] (_) in
             self?.didEnterPIP()
