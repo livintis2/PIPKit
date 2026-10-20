@@ -22,5 +22,11 @@ extension UIApplication {
         let windows = sceneWindows ?? self.windows
         return windows.first(where: \.isKeyWindow) ?? windows.first
     }
-    
+
+    @available(iOS 13.0, *)
+    var _activeWindowScene: UIWindowScene? {
+        let windowScenes = connectedScenes.compactMap { $0 as? UIWindowScene }
+        return windowScenes.first { $0.activationState == .foregroundActive } ?? windowScenes.first
+    }
+
 }
