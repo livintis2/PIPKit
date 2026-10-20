@@ -96,7 +96,7 @@ public final class PIPKit {
         let newWindow: PIPKitWindow
         
         if #available(iOS 13.0, *),
-           let currentWindowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+           let currentWindowScene = UIApplication.shared._activeWindowScene {
             newWindow = PIPKitWindow(windowScene: currentWindowScene)
         } else {
             newWindow = PIPKitWindow()
