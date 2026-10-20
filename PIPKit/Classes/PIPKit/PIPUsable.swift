@@ -9,6 +9,7 @@ public protocol PIPUsable {
     var pipSize: CGSize { get }
     var pipShadow: PIPShadow? { get }
     var pipCorner: PIPCorner? { get }
+    var pipTransitionDuration: TimeInterval { get }
     func didChangedState(_ state: PIPState)
     func didChangePosition(_ position: PIPPosition)
 }
@@ -27,6 +28,7 @@ public extension PIPUsable {
             return PIPCorner(radius: 6)
         }
     }
+    var pipTransitionDuration: TimeInterval { return 0.25 }
     func didChangedState(_ state: PIPState) {}
     func didChangePosition(_ position: PIPPosition) {}
 }

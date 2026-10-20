@@ -57,6 +57,7 @@ public protocol PIPUsable {
     var pipSize: CGSize { get }
     var pipShadow: PIPShadow? { get }
     var pipCorner: PIPCorner? { get }
+    var pipTransitionDuration: TimeInterval { get } // default 0.25
     func didChangedState(_ state: PIPState)
     func didChangePosition(_ position: PIPPosition)
 }
